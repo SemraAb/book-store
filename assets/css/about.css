@@ -1,0 +1,38 @@
+#navbar
+{
+    background-color: #871214;
+    height: 100vh;
+    width: 20vw;
+}
+
+#navbar h1{
+    color: #fff;
+}
+
+#navbar ul{
+    padding: 0;
+    list-style: none;
+    color: #fff;
+}
+
+#navbar li{
+    cursor: pointer;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+#logout{
+    border: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+#change{
+    border: none;
+    background-color: orange;
+    padding: 1vw 2vh;
+    color: #fff;
+}

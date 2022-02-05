@@ -1,0 +1,77 @@
+#navbar
+{
+    background-color: #871214;
+    height: 100vh;
+    width: 20vw;
+}
+
+#navbar h1{
+    color: #fff;
+}
+
+#navbar ul{
+    padding: 0;
+    list-style: none;
+    color: #fff;
+}
+
+#navbar li{
+    cursor: pointer;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+#logout{
+    border: none;
+    background-color: transparent;
+    color: #fff;
+}
+
+#addButton{
+    border: none;
+    background-color: orange;
+    padding: 1vw 2vh;
+    color: #fff;
+}
+
+#searchPart
+{
+    display: flex;
+}
+
+#found{
+    display: none;
+    background-color: #871214;
+    color: #fff;
+    padding: 1vw 2vh;
+}
+
+#searchingFor{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#search{
+    border: none;
+    background-color: orange;
+    padding: 0.2vw 2vh;
+    color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#removeBook
+{
+    border: none;
+    background-color: orange;
+    padding: 0.2vw 2vh;
+    color: #000;
+}
+
+#bookId
+{
+    visibility: hidden;
+}

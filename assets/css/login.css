@@ -1,0 +1,15 @@
+body{
+    background-color: #871214;
+}
+
+#log-in{
+    padding: 1vw 2vh;
+    background-color: orange;
+    /* width: 70vw; */
+}
+
+#body{
+    margin-top: auto;
+    background-color: #fff;
+    padding: 1vw 2vh;
+}
