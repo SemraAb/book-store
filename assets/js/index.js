@@ -1,15 +1,16 @@
 //@ts-check
 
-import { ref, db, onValue, set, push } from './firebase.js';
+import { ref, db, set, push } from './firebase.js';
 
 $("#addButton").on('click', () => {
     let bookBranch = ref(db, "/books");
     let bookPush = push(bookBranch);
 
-    let name = $("#bookName").val().toString().trim().toLowerCase(); 
-    let author = $("#authorName").val().toString().trim().toLowerCase(); 
-    let something = $("#something").val().toString().trim().toLowerCase(); 
-    let description = $("#description").val().toString().trim(); 
+    let name = $("#bookName").val().toString().trim(); 
+    let author = $("#authorName").val().toString().trim(); 
+    let something = $("#something").val().toString().trim(); 
+    let description = $("#description").val().toString().trim();
+    let publishDate = $("#pubDate").val();
 
     if(name != "" && author != "" && something != "" && description != "")
     {
@@ -17,11 +18,13 @@ $("#addButton").on('click', () => {
         $("#authorName").val("");
         $("#something").val("");
         $("#description").val("");
+        $("#publishDate").val("");
         set(bookPush, {
             name,
             author,
             something,
-            description
+            description,
+            publishDate
         });
     }
     else
@@ -30,7 +33,6 @@ $("#addButton").on('click', () => {
     }
 
 });
-
 
 //@ts-ignore
 window.logout = logout;

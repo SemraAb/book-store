@@ -1,4 +1,4 @@
-import { ref, push, set, onValue, db } from './firebase.js'
+import { ref, onValue, db } from './firebase.js'
 
 // let signedIn = !(window.sessionStorage.getItem("admin") == null);
 
@@ -42,7 +42,7 @@ let login = () =>
     }
     else
     {
-        alert("Username wrong");
+        alert("Username is incorrect");
     }
 }
 

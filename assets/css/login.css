@@ -3,9 +3,15 @@ body{
 }
 
 #log-in{
+    transition: all 0.5s;
     padding: 1vw 2vh;
     background-color: orange;
+    border: none;
     /* width: 70vw; */
+}
+
+#log-in:hover{
+    color: #871214;
 }
 
 #body{

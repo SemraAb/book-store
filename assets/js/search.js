@@ -1,9 +1,10 @@
 //@ts-check
 
-import { ref, db, onValue, set, push, remove } from './firebase.js';
+import { ref, db, onValue, remove } from './firebase.js';
 
 let snap;
-let couldBeRemoved;
+let couldBeRemoved = [];
+let found = false;
 
 jQuery(() =>{
     onValue(ref(db, "/books"), (snapshot) => {
@@ -13,7 +14,7 @@ jQuery(() =>{
 
 let search = () =>
 {
-    $("#found").html("");
+    $("#found").empty();
     let books = snap.val();
     if($("#searchingFor").val() == "")
     {    
@@ -33,40 +34,60 @@ let search = () =>
     
     for(let book of bookIds)
     {
-        if(book[1].name == searchedFor)
+        if(book[1].name.toLowerCase() == searchedFor.toLowerCase())
         {
             let author = $("<p>");
             let description = $("<p>");
             let name = $("<p>");
             let something = $("<p>");
-            let button = $("<button onclick='removeBook()' id='removeBook'>Remove this book</button>");
+            let pubDate = $("<p>");
             
             name.text("Name: " + book[1].name);
             description.text("description: " + book[1].description);
             author.text("Author: " + book[1].author);
             something.text("Something: " + book[1].something);
-            couldBeRemoved = book[0];
+            pubDate.text("Publish date: " + book[1].publishDate);
+            couldBeRemoved.push(book[0]);
 
-            $("#found").append(name, author, something, description, button);
+            $("#found").append(name, author, something, description, pubDate, $("<hr>"));
             $("#found").show();
 
             $("#searchingFor").val("");
+            found = true;
 
-            return;
         }
     }
 
-    $("#found").append($("<p>Couldn't find this book. If you think it is there, Please contact with the database admin.</p>"))
-    $("#found").show();
-    return;
+    if(found)
+    {
+        let button = $("<button onclick='removeBook()' id='removeBook'>Remove this book</button>");
+        $("#found").append(button);
+    }
+    else{
+        $("#found").append($("<p>Couldn't find this book. If you think it is there, please contact with the database admin.</p>"))
+        $("#found").show();
+        return;
+    }
+
 }
 
 let removeBook = () =>
 {
-    let answer = confirm("Selected book will be permanently removed");
+    let message;
+    if(couldBeRemoved.length > 1)
+    {
+        message = couldBeRemoved.length + " books will be removed permanently. Continue?";
+    }
+    else{
+        message = "Selected book will be permanently removed";
+    }
+    let answer = confirm(message);
     if(answer)
     {
-        remove(ref(db, "/books/" + couldBeRemoved));
+        for(let book of couldBeRemoved)
+        {
+            remove(ref(db, "/books/" + book));
+        }
         $("#found").hide();
     }
 }
