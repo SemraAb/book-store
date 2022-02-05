@@ -3,6 +3,7 @@
 import { ref, db, onValue, set, push, remove } from './firebase.js';
 
 let snap;
+let couldBeRemoved;
 
 jQuery(() =>{
     onValue(ref(db, "/books"), (snapshot) => {
@@ -14,6 +15,19 @@ let search = () =>
 {
     $("#found").html("");
     let books = snap.val();
+    if($("#searchingFor").val() == "")
+    {    
+        $("#found").append($("<p>Search field can't be empty.</p>"));
+        $("#found").show();
+        return;
+    }
+
+    else if(books == null)
+    {
+        $("#found").append($("<p>Database is empty. Please <strong>add book</strong> or <strong>talk to the databse admin</strong> if you think there is a problem.</p>"));
+        $("#found").show();
+        return;
+    }
     let bookIds = Object.entries(books);
     let searchedFor = $("#searchingFor").val();
     
@@ -25,21 +39,26 @@ let search = () =>
             let description = $("<p>");
             let name = $("<p>");
             let something = $("<p>");
-            let ID = $("<p id='bookId'>");
             let button = $("<button onclick='removeBook()' id='removeBook'>Remove this book</button>");
             
             name.text("Name: " + book[1].name);
             description.text("description: " + book[1].description);
             author.text("Author: " + book[1].author);
             something.text("Something: " + book[1].something);
-            ID.text("ID: " + book[0]);
+            couldBeRemoved = book[0];
 
-            $("#found").append(name, author, something, description, ID, button);
+            $("#found").append(name, author, something, description, button);
             $("#found").show();
 
             $("#searchingFor").val("");
+
+            return;
         }
     }
+
+    $("#found").append($("<p>Couldn't find this book. If you think it is there, Please contact with the database admin.</p>"))
+    $("#found").show();
+    return;
 }
 
 let removeBook = () =>
@@ -47,8 +66,7 @@ let removeBook = () =>
     let answer = confirm("Selected book will be permanently removed");
     if(answer)
     {
-        let book = $("#bookId").text().split(":")[1].trim();
-        remove(ref(db, "/books/" + book));
+        remove(ref(db, "/books/" + couldBeRemoved));
         $("#found").hide();
     }
 }

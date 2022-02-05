@@ -1,8 +1,12 @@
 #navbar
 {
     background-color: #871214;
-    height: 100vh;
+    height: 100vh !important;
     width: 20vw;
+}
+
+h1{
+    cursor: default;
 }
 
 #navbar h1{
@@ -20,14 +24,25 @@
 }
 
 a{
+    transition-property: all;
+    transition-duration: 0.4s;
     color: #fff;
     text-decoration: none;
 }
 
+a:hover{
+    color: yellow;
+    text-decoration: none;
+    padding: 0 1vw;
+}
+
 #logout{
     border: none;
+    transition-property: all;
+    transition-duration: 0.5s;
     background-color: transparent;
     color: #fff;
+    padding: 0;
 }
 
 #addButton{
@@ -74,4 +89,9 @@ a{
 #bookId
 {
     visibility: hidden;
+}
+
+#logout:hover{
+    padding: 0 1vw;
+    color: yellow;
 }
