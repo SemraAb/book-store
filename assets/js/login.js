@@ -1,7 +1,5 @@
 import { ref, onValue, db } from './firebase.js'
 
-// let signedIn = !(window.sessionStorage.getItem("admin") == null);
-
 let pass;
 let user;
 
@@ -15,7 +13,7 @@ onValue(ref(db, "/admin"), (snapshot) => {
     }
 
     else{
-        console.log("Else:", data);
+        console.log("Error occurred");
     }
 });
 
@@ -24,26 +22,35 @@ let login = () =>
     let userEntered = $("#username").val().trim();
     let passEntered = $("#password").val().trim();
 
-    console.log("user:", user, "password", pass);
-    console.log("userentered:", userEntered, "password entered:", passEntered);
     if(user == userEntered)
     {
         if(pass == passEntered)
         {
-            console.log("Welcome");
             window.sessionStorage.setItem("loggedin", true);
-            window.location.replace("../../admin.html")
+            setStatus("alert-danger", "alert-success", "<strong>Login successful</strong>");
+            window.setTimeout(() => {window.location = "../../admin.html"}, 800);
+            return;
         }
 
         else
         {
-            alert("Password is incorrect");
+            setStatus("alert-success", "alert-danger", "Unsuccessful! Check your <strong>password</strong> again");
+            return;
         }
     }
     else
     {
-        alert("Username is incorrect");
+        setStatus("alert-success", "alert-danger", "Unsuccessful! Check your <strong>username</strong> again");
+        return;
     }
 }
 
+
+let setStatus = (before, actualStatus, message) =>
+{
+    // $("#status").empty();
+    $("#status").removeClass(before);
+    $("#status").addClass(actualStatus);
+    $("#status").html(message);
+}
 window.login = login;

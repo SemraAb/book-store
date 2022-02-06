@@ -60,8 +60,9 @@ let search = () =>
 
     if(found)
     {
-        let button = $("<button onclick='removeBook()' id='removeBook'>Remove this book</button>");
-        $("#found").append(button);
+        let removeButton = $("<button onclick='removeBook()' id='removeBook'>Remove this book</button>");
+        // let closeButton = $("<button class='ms-3' onclick='close()' id='close'>Close</button>");
+        $("#found").append(removeButton);
     }
     else{
         $("#found").append($("<p>Couldn't find this book. If you think it is there, please contact with the database admin.</p>"))
@@ -70,6 +71,13 @@ let search = () =>
     }
 
 }
+
+// function close()
+// {
+//     console.log("Closing");
+//     $("#found").empty();
+//     $("#found").hide();
+// }
 
 let removeBook = () =>
 {
@@ -93,5 +101,9 @@ let removeBook = () =>
 }
 //@ts-ignore
 window.search = search;
+
 //@ts-ignore
 window.removeBook = removeBook;
+
+//@ts-ignore
+window.close = close;
