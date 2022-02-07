@@ -9,7 +9,7 @@ ul{
 a{
     transition-property: all;
     transition-duration: 0.4s;
-    color: #871214;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -25,5 +25,63 @@ a:hover{
     transition-property: all;
     transition-duration: 0.5s;
     background-color: transparent;
+    color: #fff;
+}
+#navbar
+{
+    background-color: #871214;
+    height: 100vh !important;
+    width: 20vw;
+}
+
+h1{
+    cursor: default;
+}
+
+#navbar h1{
+    color: #fff;
+}
+
+#navbar ul{
+    padding: 0;
+    list-style: none;
+    color: #fff;
+}
+
+#navbar li{
+    cursor: pointer;
+}
+
+
+#logout{
+    border: none;
+    transition-property: all;
+    transition-duration: 0.5s;
+    background-color: transparent;
+    color: #fff;
+    padding: 0;
+}
+
+#logout:hover{
+    padding: 0 1vw;
+    color: yellow;
+}
+
+#change{
+    transition: all 0.5s;
+    border: none;
+    background-color: orange;
+    padding: 1vw 2vh;
+    color: #fff;
+}
+
+#change:hover{
+    color: #871214;
+}
+.icon{
+    margin-right: 20px;
+}
+.thead{
+    background-color: #871214;
     color: #fff;
 }
