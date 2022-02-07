@@ -12,6 +12,12 @@ jQuery(() =>{
     })
 });
 
+
+/**
+ * Problem Area
+ * After a successful search, if there is any unsecssful search
+ * the remove button will remain there and let the user to remove some books
+ */
 let search = () =>
 {
     $("#found").empty();
@@ -60,17 +66,28 @@ let search = () =>
 
     if(found)
     {
+        // $("#found").empty();
         let removeButton = $("<button onclick='removeBook()' id='removeBook'>Remove this book</button>");
         // let closeButton = $("<button class='ms-3' onclick='close()' id='close'>Close</button>");
         $("#found").append(removeButton);
     }
     else{
+        found = false;  
+        while(couldBeRemoved.length != 0)
+        {
+            couldBeRemoved.pop();
+        }
+        $("#found").empty();
         $("#found").append($("<p>Couldn't find this book. If you think it is there, please contact with the database admin.</p>"))
         $("#found").show();
         return;
     }
 
 }
+
+/**
+ * End of the problem area
+ */
 
 // function close()
 // {
@@ -99,6 +116,7 @@ let removeBook = () =>
         $("#found").hide();
     }
 }
+
 //@ts-ignore
 window.search = search;
 
