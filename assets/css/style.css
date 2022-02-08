@@ -1,10 +1,11 @@
 body{
-    height: 200vh;
+    height: fit-content;
 }
 
 /*Navbar design*/
 #navbar
 {
+    position: fixed;
     background-color: #871214;
     height: 200vh !important;
     width: 20vw;
@@ -72,6 +73,17 @@ body{
     background-color: orange;
     padding: 1vw 2vh;
     color: #fff;
+}
+
+#addType{
+    transition: all 0.5s;
+    border: none;
+    background-color: orange;
+    color: #fff;
+}
+
+#addType:hover{
+    color: #871214;
 }
 
 #addButton:hover{

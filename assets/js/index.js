@@ -9,6 +9,8 @@ import { ref, db, set, push, onValue, remove } from './firebase.js';
 
 let loggedIn = !(window.sessionStorage.getItem("loggedin") == null);
 
+let isNew = false;
+
 if(!loggedIn)
 {
     window.location.replace("../../login.html");
@@ -20,6 +22,34 @@ let logout = () =>
     window.location.replace("../../login.html");
 }
 
+$("#isNew").on('click', () => {
+    if (isNew)
+    {
+        isNew = false;
+    }
+    else
+    {
+        isNew = true;
+    }
+});
+
+
+/**
+ * Adds book type to the list
+ */
+
+$("#addType").on('click', () => {
+    let type = $("#type").val();
+    if(type != "")
+    {
+        let typePush = push(ref(db, "/categories"));
+        set(typePush, {
+            type
+        });
+    }
+});
+
+
 /**
  * Adds book to the database
  */
@@ -29,23 +59,25 @@ $("#addButton").on('click', () => {
 
     let name = $("#bookName").val().toString().trim(); 
     let author = $("#authorName").val().toString().trim(); 
-    let something = $("#something").val().toString().trim(); 
+    let imageUrl = $("#imageURL").val().toString().trim(); 
     let description = $("#description").val().toString().trim();
     let publishDate = $("#pubDate").val();
 
-    if(name != "" && author != "" && something != "" && description != "")
+    // console.log($("#bookType").val());
+    if(name != "" && author != "" && imageUrl != "" && description != "")
     {
         $("#bookName").val("");
         $("#authorName").val("");
-        $("#something").val("");
+        $("#imageURL").val("");
         $("#description").val("");
         $("#pubDate").val("");
         set(bookPush, {
             name,
             author,
-            something,
+            imageUrl,
             description,
-            publishDate
+            publishDate,
+            isNew
         });
     }
     else
@@ -116,7 +148,8 @@ let search = () =>
     
     for(let book of bookIds)
     {
-        if(book[1].name.toLowerCase() == searchedFor.toLowerCase())
+        if(book[1].name.toLowerCase() == searchedFor)
+        // if(book[1].name.toLowerCase() == searchedFor.toLowerCase())
         {
             let author = $("<p>");
             let description = $("<p>");
@@ -188,6 +221,15 @@ let removeBook = () =>
 }
 
 
+/**
+ * Deletes the user that joined
+ */
+
+// let removeUser = (user) => {
+//     let userId = $(user).data("id");
+//     console.log("removing:", userId);
+//     remove(ref(db, "/joinedUsers" + userId));
+// }
 
 /**
  * onValue method for join.html file
@@ -206,6 +248,7 @@ onValue(ref(db, "/joinedUsers"), (snapshot) => {
         let head = $("<th scope='row'>" + num + "</th>");
         let td1 = $("<td>" + user[1].fullName + "</td>");
         let td2 = $("<td>" + user[1].email + "</td>");
+        // let removeButton = $("<button data-id='" + user[0] + "' onclick='removeUser(this)'>Remove User</button>");
 
         tr.append(head, td1, td2);
         $("#table-body").append(tr);
@@ -237,6 +280,14 @@ onValue(ref(db, "/contact"), (snapshot) => {
     }
 });
 
+onValue(ref(db, "/categories"), (snapshot) => {
+    let data = snapshot.val();
+    for(let type of Object.entries(data))
+    {
+        $("#bookType").append($("<option selected value=" + type[1].type + ">" + type[1].type + "</option>"));
+    }
+});
+
 //@ts-ignore
 window.logout = logout;
 
@@ -247,4 +298,7 @@ window.changeAbout = changeAbout;
 window.removeBook = removeBook;
 
 //@ts-ignore
-window.search = search;     
+window.search = search;
+
+//@ts-ignore
+// window.removeUser = removeUser;
