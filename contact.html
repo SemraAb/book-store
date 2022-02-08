@@ -42,6 +42,31 @@
             </div>
         </div>
     </header>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content p-4">
+                <div class="modal-body ">
+                    <div class="h1 modal-title mb-4 font-weight-bold text-center">Join Us</div>
+                    <form method="post">
+                        <div class="form-group "> <input type="text" placeholder="Full Name"
+                                class="form-control form-control-lg" id="joinBookFullName"> </div>
+                        <div class="form-group my-4"> <input type="email" placeholder="Email"
+                                class="form-control form-control-lg" id="joinBookEmail"> </div><button id="joinBookBtn" type="button" class="btn bg-orange btn-lg text-white btn-block">Join</button>
+                        <div class="alert alert-danger mt-4 join-error" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Error</h4>
+                            <p></p>
+                            <p class="mb-0">Please check form</p>
+                        </div>
+                        <div class="alert alert-success mt-4 join-success" role="alert" style="display: none;">
+                            <h4 class="alert-heading">Successful</h4>
+                            <p></p>
+                            <p class="mb-0">Welcome to the library</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>  
 
     <div class="body container">
         <div class="row mt-5" id="contact-text">
@@ -124,12 +149,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/72fc72c8e8.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/72fc72c8e8.js" crossorigin="anonymous"></script>
 </body>
 </html>

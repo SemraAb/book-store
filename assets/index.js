@@ -23,3 +23,19 @@ $("#sendButton").on('click', () => {
         alert("Please fill the form correctly")
     }
 });
+
+$("#joinBookBtn").on("click", () => {
+    let name = $("#joinBookFullName").val();
+    let email = $("#joinBookEmail").val();
+
+    if(name != "" && email != "")
+    {
+        let joinPush = push(ref(db, "/joinedUsers"));
+        set(joinPush, {
+            fullName: name,
+            email
+        });
+        $("#joinBookFullName").val("");
+        $("#joinBookEmail").val("");
+    }
+});

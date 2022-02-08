@@ -80,6 +80,10 @@ footer
     background-color: #FF8B00;
 }
 
+#joinBookBtn:hover{
+    color: #871214;
+}
+
 
 /*Contact page style starts here*/
 #contact-text{
