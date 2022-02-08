@@ -13,13 +13,13 @@ let isNew = false;
 
 if(!loggedIn)
 {
-    window.location.replace("../../login.html");
+    window.location.replace("/admin/login.html");
 }
 
 let logout = () =>
 {
     window.sessionStorage.clear();
-    window.location.replace("../../login.html");
+    window.location.replace("/admin/login.html");
 }
 
 $("#isNew").on('click', () => {

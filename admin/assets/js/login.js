@@ -28,7 +28,7 @@ let login = () =>
         {
             window.sessionStorage.setItem("loggedin", true);
             setStatus("alert-danger", "alert-success", "<strong>Login successful</strong>");
-            window.setTimeout(() => {window.location = "../../admin.html"}, 800);
+            window.setTimeout(() => {window.location = "/admin/admin.html"}, 800);
             return;
         }
 
