@@ -1,0 +1,111 @@
+body{
+    color: #1D1102;
+}
+
+.nav {
+  list-style: none;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.line {
+  background-color: #720418;
+  width: 25px;
+  height: 3px;
+  display: block;
+  transition: 0.4s;
+  margin-bottom: 5px;
+}
+
+header {
+  border-bottom: 2px solid whitesmoke;
+}
+
+.active{
+    text-decoration: underline !important;
+    color: #FF8B00 !important;
+    font-weight: 700;
+}
+
+.btn-primary
+{
+    background-color:#FF8B00 ;
+    border: none;
+
+}
+
+.btn-primary:hover
+{
+    background-color: #a40606;
+background-image: linear-gradient(315deg, #a40606 0%, #d98324 74%);
+
+}
+
+.follow-icons a i 
+{
+    color: #1D1102;
+}
+
+footer
+{
+    background-color: #391F00;
+    height: fit-content;
+}
+
+.list-group
+{
+    color: #fff;
+}
+
+.fa-facebook:hover{
+    color: #4064ac;
+}
+
+.fa-twitter:hover{
+    color: #1c9cea;
+}
+
+.fa-instagram:hover{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+            /* Also define standard property for compatibility */
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#joinBookBtn
+{
+    background-color: #FF8B00;
+}
+
+
+/*Contact page style starts here*/
+#contact-text{
+    color: #000;
+    font-size: 50px;
+}
+
+#sendButton{
+    transition: all 0.5s;
+    border: none;
+    background-color: orange;
+    padding: 1vw 2vh;
+    color: #fff;
+}
+
+#sendButton:hover{
+    color: #871214;
+}
+
+.list-group-item{
+    color: #fff;
+    cursor: pointer;
+}
+
+.fab{
+    transition: all;
+    transition-duration: 0.8;
+    cursor: pointer;
+}
